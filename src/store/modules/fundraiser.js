@@ -7,7 +7,9 @@ const state = {
 
 // GETTERS
 const getters = {
-
+    getFundraisers: state => {
+        return state.fundraisers;
+    }
 }
 
 // MUTATIONS
@@ -21,8 +23,8 @@ const mutations = {
 const actions = {
     async fetchFundraisers({ commit }) {
         try {
-            const data = await axios.get('https://api.gofundraise.com.au/v1/pages/search?eventcampaignid=3&pagetype=S&sortorder=desc&sortby=4&pagesize=1')
-            commit('SET_FUNDRAISERS', data);
+            const response = await axios.get('https://api.gofundraise.com.au/v1/pages/search?eventcampaignid=3&pagetype=S&sortorder=desc&sortby=4&pagesize=1')
+            commit('SET_FUNDRAISERS', response.data);
         } catch(error) {
             console.log(error);
         }

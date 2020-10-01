@@ -9,6 +9,7 @@
                         </div>
 
                         <div class="md:col-span-2">
+                            {{ getFundraisers }}
                             <FundraiserItem></FundraiserItem>
                         </div>
                     </div>
@@ -21,11 +22,16 @@
 
 <script>
 import FundraiserItem from '@/components/Fundraiser';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Home',
     components: {
         FundraiserItem,
+    },
+
+    computed: {
+        ...mapGetters('fundraiser', ['getFundraisers'])
     }
 }
 </script>
