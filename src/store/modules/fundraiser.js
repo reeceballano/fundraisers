@@ -30,6 +30,10 @@ const getters = {
 
     getPageType: state => {
         return state.pageType;
+    },
+
+    getIsLoading: state => {
+        return state.isLoading;
     }
 }
 
