@@ -15,10 +15,10 @@
                                 <Select name="selectPageType" :data="pageType"></Select>
                             </div>
 
-                            <!-- <div class="w-full mb-3">
+                            <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Theme</label>
                                 <Select name="selectTheme" :data="theme"></Select>
-                            </div> -->
+                            </div>
 
                             <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Item to display</label>

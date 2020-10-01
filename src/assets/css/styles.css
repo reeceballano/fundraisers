@@ -29,5 +29,51 @@
 */
 
 #sidebar {
-    height: 400px !important;
+    height: 500px !important;
+    background: #ffffff;
+}
+
+.dark #sidebar {
+    background: #888888 !important;
+}
+
+/**
+    FUNDRAISER ITEM
+*/
+
+.dark .select-none {
+    background: #888888;
+}
+
+.dark .select-none div {
+    color: #fff;
+}
+
+/**
+    THEME
+*/
+
+.dark {
+    background: linear-gradient(180deg, #090909, #2a2034, #8c4226) !important;
+    background-size: 600% 600% !important;
+
+    -webkit-animation: DarkTheme 0s ease infinite;
+    -moz-animation: DarkTheme 0s ease infinite;
+    animation: DarkTheme 0s ease infinite;
+}
+
+@-webkit-keyframes DarkTheme {
+    0%{background-position:56% 0%}
+    50%{background-position:45% 100%}
+    100%{background-position:56% 0%}
+}
+@-moz-keyframes DarkTheme {
+    0%{background-position:56% 0%}
+    50%{background-position:45% 100%}
+    100%{background-position:56% 0%}
+}
+@keyframes DarkTheme {
+    0%{background-position:56% 0%}
+    50%{background-position:45% 100%}
+    100%{background-position:56% 0%}
 }
