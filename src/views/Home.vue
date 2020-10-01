@@ -23,7 +23,7 @@
                                 ></Select>
                             </div>
 
-                            <div class="border-t mb-3 mt-10 pt-10 relative w-full">
+                            <div class="button-wrapper">
                                 <button 
                                     type="button"
                                     class=" text-white w-full" 
@@ -84,7 +84,6 @@ export default {
     data() {
         return {
             campaignId: 1,
-            theme: ['light', 'dark'],
             pageType: ['S', 'T'],
             toggle: false,
         }

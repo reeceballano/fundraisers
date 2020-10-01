@@ -4,8 +4,8 @@ import axios from 'axios';
 const state = {
     campaignId: 1,
     theme: 'light',
-    pageType: 'S',
-    itemCount: 10,
+    pageType: '',
+    itemCount: 0,
     fundraisers: {},
     isLoading: false,
 }

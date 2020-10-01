@@ -40,6 +40,10 @@
     @apply bg-blue-600;
 }
 
+.button-wrapper {
+    @apply border-t mb-3 mt-10 pt-10 relative w-full;
+}
+
 
 /**
     SIDEBAR
@@ -50,21 +54,6 @@
     background: #ffffff;
 }
 
-.dark #sidebar {
-    background: #888888 !important;
-}
-
-/**
-    FUNDRAISER ITEM
-*/
-
-.dark .select-none {
-    background: #888888;
-}
-
-.dark .select-none div {
-    color: #fff;
-}
 
 /**
     TOGGLE SWITCH
@@ -85,6 +74,18 @@ input:checked ~ .toggle__dot {
     THEME
 */
 
+.dark #sidebar {
+    background: #3f415a !important;
+}
+
+.dark .select-none {
+    background: #3f51b5;
+}
+
+.dark .select-none div {
+    color: #fff;
+}
+
 .dark {
     background: linear-gradient(180deg, #090909, #2a2034, #8c4226) !important;
     background-size: 600% 600% !important;
@@ -92,6 +93,33 @@ input:checked ~ .toggle__dot {
     -webkit-animation: DarkTheme 0s ease infinite;
     -moz-animation: DarkTheme 0s ease infinite;
     animation: DarkTheme 0s ease infinite;
+}
+
+.dark label {
+    color: #b5b7c7;
+}
+
+.dark select,
+.dark input[type=text] {
+    background: #36384c;
+    border-color: #292b2a;
+    color: #b5b7c7;
+}
+
+.dark .button-wrapper {
+    @apply border-gray-600;
+}
+
+.dark .button-enabled {
+    background: #e28a07 !important;
+}
+
+.dark .button-disabled {
+    background: #c1a675 !important;
+}
+
+.dark .button-wrapper span {
+    color: #c9cbe2 !important;
 }
 
 @-webkit-keyframes DarkTheme {
