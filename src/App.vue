@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    mounted() {
+    created() {
         this.$store.dispatch('fundraiser/fetchFundraisers')
     }
 }

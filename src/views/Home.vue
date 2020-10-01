@@ -4,13 +4,43 @@
             <div class="container md:px-24">
                 <div class="py-24">
                     <div class="flex gap-16">
-                        <div class="md:w-1/3 shadow-md p-8 h-64">
-                            <h3>Options</h3>
-                        </div>
+                        <div id="sidebar" class="md:w-1/3 shadow-md p-8 h-64 rounded">
+                            <div class="w-full mb-3">
+                                <label for="campaignId" class="font-light">Campaign</label>
+                                <input id="campaignId" name="campaignId" class="text-input" type="text" v-model="campaignId" @keypress.enter="saveOptions()" />
+                            </div>
 
+                            <div class="w-full mb-3">
+                                <label for="campaignId" class="font-light">Page Type</label>
+                                <Select name="selectPageType" :data="pageType"></Select>
+                            </div>
+
+                            <div class="w-full mb-3">
+                                <label for="campaignId" class="font-light">Theme</label>
+                                <Select name="selectTheme" :data="theme"></Select>
+                            </div>
+
+                            <div class="w-full mb-3">
+                                <label for="campaignId" class="font-light">Item to display</label>
+                                <Select 
+                                    name="selectItemCount"
+                                    :data="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
+                                ></Select>
+                            </div>
+                            
+                        </div>
                         <div class="md:w-2/3">
-                            {{ getFundraisers }}
-                            <FundraiserItem></FundraiserItem>
+                            {{ getCampaignId}}
+                            {{ getTheme}}
+                            {{ getItemCount}}
+                            {{ getPageType}}
+
+                            {{ getFundraisers }}            
+                            <FundraiserItem 
+                                v-for="(data, index) in getFundraisers"
+                                :key="index"
+                                :fundraiser="data">
+                            </FundraiserItem>
                         </div>
                     </div>
 
@@ -23,15 +53,38 @@
 <script>
 import FundraiserItem from '@/components/Fundraiser';
 import { mapGetters } from 'vuex';
+import Select from '@/components/Select';
 
 export default {
     name: 'Home',
     components: {
         FundraiserItem,
+        Select,
+    },
+
+    data() {
+        return {
+            campaignId: 1,
+            theme: ['light', 'dark'],
+            pageType: ['S', 'T']
+        }
     },
 
     computed: {
-        ...mapGetters('fundraiser', ['getFundraisers'])
+        ...mapGetters('fundraiser', ['getFundraisers', 'getCampaignId', 'getTheme', 'getItemCount', 'getPageType'])
+    },
+
+    watch: {
+        campaignId() {
+            this.saveOptions();
+        }
+    },
+
+    methods: {
+        saveOptions() {
+            console.log('changed', this.campaignId)
+            this.$store.dispatch('fundraiser/saveCampaignId', this.campaignId);
+        }
     }
 }
 </script>
