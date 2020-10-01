@@ -7,6 +7,7 @@ const state = {
     pageType: '',
     itemCount: 0,
     fundraisers: {},
+    isLoading: false,
 }
 
 // GETTERS
@@ -57,12 +58,17 @@ const mutations = {
 
 // ACTIONS
 const actions = {
+
     async fetchFundraisers({ commit, state }) {
+        state.isLoading = true;
+
         try {
             const url = `https://api.gofundraise.com.au/v1/pages/search?eventcampaignid=${Number(state.campaignId)}&pagetype=${state.pageType}&sortorder=desc&sortby=4&pagesize=${ state.itemCount }`;
             const response = await axios.get(url)
-            console.log(response.data)
+            
+            state.isLoading = false;
             commit('SET_FUNDRAISERS', response.data.Pages);
+
         } catch(error) {
             console.log(error);
         }

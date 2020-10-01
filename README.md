@@ -3,6 +3,7 @@ Fundraiser App is built with:
 
 - Vue
 - Vuex
+- Axios
 - Tailwindcss
 - GoFundRaise.com API (api.gofundraise.com.au)
 
