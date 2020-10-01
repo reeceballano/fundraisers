@@ -3,10 +3,10 @@
         <section class="section">
             <div class="container md:px-24">
                 <div class="py-24">
-                    <div class="flex gap-16">
+                    <div class="flex flex-col md:flex-row gap-16">
                         <div id="sidebar" class="md:w-1/3 shadow-md p-8 h-64 rounded">
                             <div class="w-full mb-3">
-                                <label for="campaignId" class="font-light">Campaign</label>
+                                <label for="campaignId" class="font-light">Campaign ID</label>
                                 <input id="campaignId" name="campaignId" class="text-input" type="text" v-model="campaignId" @keypress.enter="saveOptions()" />
                             </div>
 
@@ -16,29 +16,43 @@
                             </div>
 
                             <div class="w-full mb-3">
-                                <label for="campaignId" class="font-light">Theme</label>
-                                <Select name="selectTheme" :data="theme"></Select>
-                            </div>
-
-                            <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Item to display</label>
                                 <Select 
                                     name="selectItemCount"
-                                    :data="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
+                                    :data="[1,2,3,4,5,6,7,8,9,10]"
                                 ></Select>
                             </div>
 
-                            <div class="w-full mb-3 border-t mt-10 pt-10">
+                            <div class="border-t mb-3 mt-10 pt-10 relative w-full">
                                 <button 
                                     type="button"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                                    class=" text-white w-full" 
                                     @click="fetchItems()" 
-                                    :class="{ 'cursor-not-allowed': getPageType === '' }"
+                                    :class="[getPageType ? 'button-enabled' : 'button-disabled']"
                                     :disabled="getPageType == ''"
                                 >Show
                                 </button>
+
+                                <div class="flex items-center justify-center w-full mt-8">
+                                    <label for="toogleA" class="flex items-center cursor-pointer" >
+                                        <div class="relative">
+                                            <input v-model="toggle" id="toogleA" type="checkbox" class="hidden" />
+                                            <div class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                                            <div class="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0" ></div>
+                                        </div>
+
+                                        <div class="ml-3 text-gray-700 font-medium">
+                                            <span v-if="toggle">
+                                                Swith to Light Mode
+                                           </span>
+
+                                           <span v-else>
+                                               Swith to Dark Mode
+                                           </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
-                            
                         </div>
                         <div class="md:w-2/3">
                             <FundraiserItem 
@@ -71,7 +85,8 @@ export default {
         return {
             campaignId: 1,
             theme: ['light', 'dark'],
-            pageType: ['S', 'T']
+            pageType: ['S', 'T'],
+            toggle: false,
         }
     },
 
@@ -83,6 +98,14 @@ export default {
         campaignId() {
             this.saveOptions();
         },
+
+        toggle() {
+            if(this.toggle === true) {
+                this.$store.dispatch('fundraiser/saveTheme', 'dark');
+            } else {
+                this.$store.dispatch('fundraiser/saveTheme', 'light');
+            }
+        }
     },
 
     methods: {

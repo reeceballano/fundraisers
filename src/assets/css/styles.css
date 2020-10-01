@@ -23,6 +23,23 @@
     @apply outline-none bg-white border-gray-500;
 }
 
+.button {
+    @apply uppercase;
+}
+
+.button-disabled,
+.button:disabled {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed;
+}
+
+.button-enabled {
+    @apply bg-blue-500 font-bold px-4 py-2 rounded;
+}
+
+.button-enabled:hover {
+    @apply bg-blue-600;
+}
+
 
 /**
     SIDEBAR
@@ -47,6 +64,21 @@
 
 .dark .select-none div {
     color: #fff;
+}
+
+/**
+    TOGGLE SWITCH
+*/
+
+.toggle__dot {
+    top: -.25rem;
+    left: -.25rem;
+    transition: all 0.3s ease-in-out;
+}
+  
+input:checked ~ .toggle__dot {
+    transform: translateX(100%);
+    background-color: #48bb78;
 }
 
 /**

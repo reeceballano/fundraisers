@@ -33,9 +33,9 @@ export default {
     methods: {
         saveOptions() {
             switch(this.name) {
-                case 'selectTheme':
-                    this.$store.dispatch('fundraiser/saveTheme', this.option);
-                    break;
+                // case 'selectTheme':
+                //     this.$store.dispatch('fundraiser/saveTheme', this.option);
+                //     break;
 
                 case 'selectItemCount':
                     this.$store.dispatch('fundraiser/saveItemCount', this.option);
