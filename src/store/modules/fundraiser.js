@@ -4,8 +4,8 @@ import axios from 'axios';
 const state = {
     campaignId: 1,
     theme: 'light',
-    pageType: '',
-    itemCount: 0,
+    pageType: 'S',
+    itemCount: 10,
     fundraisers: {},
     isLoading: false,
 }
@@ -13,7 +13,7 @@ const state = {
 // GETTERS
 const getters = {
     getFundraisers: state => {
-        return state.fundraisers;
+       return  state.fundraisers;
     },
 
     getCampaignId: state => {
@@ -64,8 +64,8 @@ const actions = {
 
         try {
             const url = `https://api.gofundraise.com.au/v1/pages/search?eventcampaignid=${Number(state.campaignId)}&pagetype=${state.pageType}&sortorder=desc&sortby=4&pagesize=${ state.itemCount }`;
-            const response = await axios.get(url)
-            
+            const response = await axios.get(url);
+
             state.isLoading = false;
             commit('SET_FUNDRAISERS', response.data.Pages);
 

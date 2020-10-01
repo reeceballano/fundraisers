@@ -10,7 +10,7 @@
                         <div class="font-medium">{{ fundraiser.CreatorName }}</div>
                         <div class="text-gray-600 text-sm">ID: {{ fundraiser.Id }}</div>
                     </div>
-                    <div class="text-gray-600 text-xs">${{ fundraiser.Total }}</div>
+                    <div class="text-gray-600 text-xs">${{ numberWithCommas }}</div>
                 </div>
             </div>
         </div>
@@ -28,11 +28,11 @@ export default {
         }
     },
 
-
+    computed: {
+        numberWithCommas() {
+            return this.fundraiser.Total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        }
+    }
 
 }
 </script>
-
-<style>
-
-</style>

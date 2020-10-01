@@ -91,7 +91,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters('fundraiser', ['getFundraisers', 'getCampaignId', 'getTheme', 'getItemCount', 'getPageType'])
+        ...mapGetters('fundraiser', ['getFundraisers', 'getCampaignId', 'getTheme', 'getItemCount', 'getPageType']),
     },
 
     watch: {
@@ -109,6 +109,7 @@ export default {
     },
 
     methods: {
+
         fetchItems() {
             console.log('fetch')
             this.$store.dispatch('fundraiser/fetchFundraisers');
