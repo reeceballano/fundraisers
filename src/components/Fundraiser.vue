@@ -6,13 +6,12 @@
                     <img v-if="fundraiser.ImagePath" :src="fundraiser.ImagePath" alt="" />
                 </div>
                 <div class="flex-1 pl-1 mr-16">
-                    <div class="font-medium">Cup of water</div>
-                    <div class="text-gray-600 text-sm">200ml</div>
+                    <div class="font-medium">{{ fundraiser.CreatorName }}</div>
+                    <div class="text-gray-600 text-sm">ID: {{ fundraiser.Id }}</div>
                 </div>
-                <div class="text-gray-600 text-xs">6:00 AM</div>
+                <div class="text-gray-600 text-xs">${{ fundraiser.Total }}</div>
             </div>
         </div>
-
     </div>
 </template>
 

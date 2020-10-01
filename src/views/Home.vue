@@ -15,10 +15,10 @@
                                 <Select name="selectPageType" :data="pageType"></Select>
                             </div>
 
-                            <div class="w-full mb-3">
+                            <!-- <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Theme</label>
                                 <Select name="selectTheme" :data="theme"></Select>
-                            </div>
+                            </div> -->
 
                             <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Item to display</label>
@@ -27,15 +27,20 @@
                                     :data="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
                                 ></Select>
                             </div>
+
+                            <div class="w-full mb-3 border-t mt-10 pt-10">
+                                <button 
+                                    type="button"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                                    @click="fetchItems()" 
+                                    :class="{ 'cursor-not-allowed': getPageType === '' }"
+                                    :disabled="getPageType == ''"
+                                >Show
+                                </button>
+                            </div>
                             
                         </div>
                         <div class="md:w-2/3">
-                            {{ getCampaignId}}
-                            {{ getTheme}}
-                            {{ getItemCount}}
-                            {{ getPageType}}
-
-                            {{ getFundraisers }}            
                             <FundraiserItem 
                                 v-for="(data, index) in getFundraisers"
                                 :key="index"
@@ -77,10 +82,15 @@ export default {
     watch: {
         campaignId() {
             this.saveOptions();
-        }
+        },
     },
 
     methods: {
+        fetchItems() {
+            console.log('fetch')
+            this.$store.dispatch('fundraiser/fetchFundraisers');
+        },
+
         saveOptions() {
             console.log('changed', this.campaignId)
             this.$store.dispatch('fundraiser/saveCampaignId', this.campaignId);

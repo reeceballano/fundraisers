@@ -5,7 +5,7 @@ const state = {
     campaignId: 1,
     theme: 'light',
     pageType: '',
-    itemCount: 5,
+    itemCount: 0,
     fundraisers: {},
 }
 
@@ -58,36 +58,29 @@ const mutations = {
 // ACTIONS
 const actions = {
     async fetchFundraisers({ commit, state }) {
-        console.log('fetch');
-        console.log(state.campaignId, state.theme, state.pageType, state.itemCount)
         try {
             const url = `https://api.gofundraise.com.au/v1/pages/search?eventcampaignid=${Number(state.campaignId)}&pagetype=${state.pageType}&sortorder=desc&sortby=4&pagesize=${ state.itemCount }`;
             const response = await axios.get(url)
-            commit('SET_FUNDRAISERS', response);
-            console.log(url)
+            console.log(response.data)
+            commit('SET_FUNDRAISERS', response.data.Pages);
         } catch(error) {
             console.log(error);
         }
     },
 
-    saveCampaignId({ commit, dispatch }, payload) {
-        console.log('save CID')
-        dispatch('fetchFundraisers');
+    saveCampaignId({ commit }, payload) {
         commit('SET_CAMPAIGNID', payload);
     },
 
-    saveTheme({ commit, dispatch }, payload) {
-        dispatch('fetchFundraisers');
+    saveTheme({ commit }, payload) {
         commit('SET_THEME', payload);
     },
 
-    saveItemCount({ commit, dispatch }, payload) {
-        dispatch('fetchFundraisers');
+    saveItemCount({ commit }, payload) {
         commit('SET_ITEMCOUNT', payload);
     },
 
-    savePageType({ commit, dispatch }, payload) {
-        dispatch('fetchFundraisers');
+    savePageType({ commit }, payload) {
         commit('SET_PAGETYPE', payload);
     }
 }

@@ -7,7 +7,7 @@
 <script>
 export default {
     created() {
-        this.$store.dispatch('fundraiser/fetchFundraisers')
+        // this.$store.dispatch('fundraiser/fetchFundraisers')
     }
 }
 </script>
