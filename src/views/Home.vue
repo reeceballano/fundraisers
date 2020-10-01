@@ -11,7 +11,7 @@
                             </div>
 
                             <div class="w-full mb-3">
-                                <label for="campaignId" class="font-light">Page Type</label>
+                                <label for="campaignId" class="font-light">Page Type <small>(S: Individual T: Team)</small></label>
                                 <Select name="selectPageType" :data="pageType"></Select>
                             </div>
 
