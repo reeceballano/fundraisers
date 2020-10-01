@@ -3,12 +3,12 @@
         <section class="section">
             <div class="container md:px-24">
                 <div class="py-24">
-                    <div class="grid md:grid-cols-3 gap-10">
-                        <div class="md:col-span-1 shadow-md p-8">
+                    <div class="flex gap-16">
+                        <div class="md:w-1/3 shadow-md p-8 h-64">
                             <h3>Options</h3>
                         </div>
 
-                        <div class="md:col-span-2">
+                        <div class="md:w-2/3">
                             {{ getFundraisers }}
                             <FundraiserItem></FundraiserItem>
                         </div>
