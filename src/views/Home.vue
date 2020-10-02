@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="md:w-2/3">
+                        <div class="md: ml-10 md:w-2/3">
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
                             <FundraiserItem 
                                 v-for="(data, index) in getFundraisers"
