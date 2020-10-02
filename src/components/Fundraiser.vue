@@ -24,6 +24,7 @@ export default {
 
     props: {
         fundraiser: {
+            type: Object,
             required: true
         }
     },
