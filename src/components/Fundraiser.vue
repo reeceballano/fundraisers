@@ -30,7 +30,9 @@ export default {
 
     computed: {
         numberWithCommas() {
-            return this.fundraiser.Total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+            return Number(parseFloat(this.fundraiser.Total).toFixed(2)).toLocaleString('en', {
+                minimumFractionDigits: 2
+            });
         }
     }
 
