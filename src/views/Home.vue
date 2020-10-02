@@ -4,7 +4,7 @@
             <div class="container md:px-24">
                 <div class="py-24">
                     <div class="flex flex-col md:flex-row gap-16">
-                        <div id="sidebar" class="md:w-1/3 shadow-md p-8 h-64 rounded">
+                        <div id="sidebar" class="mb-10 md:w-1/3 shadow-md p-8 h-64 rounded">
                             <div class="w-full mb-3">
                                 <label for="campaignId" class="font-light">Campaign ID</label>
                                 <input id="campaignId" name="campaignId" class="text-input" type="text" v-model="campaignId" @keypress.enter="saveOptions()" />
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="md: ml-10 md:w-2/3">
+                        <div class="md:ml-10 md:w-2/3">
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
                             <FundraiserItem 
                                 v-for="(data, index) in getFundraisers"
