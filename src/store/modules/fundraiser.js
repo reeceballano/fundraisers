@@ -8,6 +8,7 @@ const state = {
     itemCount: 0,
     fundraisers: {},
     isLoading: false,
+    hasError: false,
 }
 
 // GETTERS
@@ -34,6 +35,10 @@ const getters = {
 
     getIsLoading: state => {
         return state.isLoading;
+    },
+
+    getHasError: state => {
+        return state.hasError;
     }
 }
 
@@ -57,6 +62,10 @@ const mutations = {
 
     SET_PAGETYPE(state, pageType) {
         state.pageType = pageType;
+    },
+
+    SET_HASERROR(state, hasError) {
+        state.hasError = hasError;
     }
 }
 
@@ -74,7 +83,8 @@ const actions = {
             commit('SET_FUNDRAISERS', response.data.Pages);
 
         } catch(error) {
-            console.log(error);
+            console.log('error:', error);
+            commit('SET_HASERROR', true);
         }
     },
 
