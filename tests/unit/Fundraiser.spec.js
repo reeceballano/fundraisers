@@ -5,26 +5,30 @@ describe('Fundraiser', () => {
 
     const data = {
         Id: 123,
-        Total: '12345.11'
+        Total: '123456789.11'
     }
 
-    it('should return a comma separated total', () => {
-        const wrapper = mount(Fundraiser, {
+    let wrapper = null;
+    
+    beforeEach(() => {
+        wrapper = mount(Fundraiser, {
             propsData: {
                 fundraiser: data
             }
         })
-        
-        expect(wrapper.vm.numberWithCommas).toBe("12,345.11")
+    });
+
+    afterEach(() => {
+        wrapper.destroy();
     })
 
-    it('props should contain an object type', () => {
-        const wrapper = mount(Fundraiser, {   
-            propsData: {
-                fundraiser: data
-            }
-        })
-    
-        expect(wrapper.props().fundraiser).toBe(data);
+    it('should return a comma separated total', () => {
+        const numberWithCommas = wrapper.vm.numberWithCommas;
+        expect(numberWithCommas).toBe("123,456,789.11")
+    })
+
+    it('props should contain an object type/value', () => {
+        const fundraiser = wrapper.props().fundraiser;
+        expect(fundraiser).toBe(data);
     })
 })
