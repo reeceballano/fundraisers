@@ -42,7 +42,5 @@ export default {
         ...mapGetters('fundraiser', ['getFundraisers', 'getIsLoading', 'getHasError']),
     },
 
-
-
 }
 </script>
