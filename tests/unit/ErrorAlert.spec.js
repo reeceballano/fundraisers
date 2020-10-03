@@ -7,12 +7,28 @@ describe('ErrorAlert', () => {
         hasError: true
     }
 
-    it('renders props.error and props.hasError when passed', () => {
-        const wrapper = shallowMount(ErrorAlert, {
+    let wrapper = null;
+
+    
+    beforeEach(() => {
+        wrapper = shallowMount(ErrorAlert, {
             propsData: data
         })
+    });
+
+    afterEach(() => {
+        wrapper.destroy();
+    })
+
+    it('renders error message when passed', () => {
+        const errorMessage = wrapper.props().error;
         
-        expect(wrapper.text()).toMatch(data.error);
-        expect(wrapper.props().hasError).toBe(true);
+        expect(errorMessage).toMatch('this is the error message');
+    })
+
+    it('renders true or false when passed', () => {
+        const hasError = wrapper.props().hasError;
+        
+        expect(hasError).toBe(true);
     })
 })
