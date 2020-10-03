@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Fundraiser from '@/components/Fundraiser.vue'
 
 describe('Fundraiser', () => {
@@ -11,7 +11,7 @@ describe('Fundraiser', () => {
     let wrapper = null;
     
     beforeEach(() => {
-        wrapper = mount(Fundraiser, {
+        wrapper = shallowMount(Fundraiser, {
             propsData: {
                 fundraiser: data
             }
@@ -29,6 +29,12 @@ describe('Fundraiser', () => {
 
     it('props should contain an object type/value', () => {
         const fundraiser = wrapper.props().fundraiser;
-        expect(fundraiser).toBe(data);
+        const expectedData = {
+            Id: 123,
+            Total: '123456789.11'
+        }
+        
+        expect(fundraiser).toStrictEqual(expectedData);
     })
+    
 })
