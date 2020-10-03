@@ -2,14 +2,17 @@ import { shallowMount } from '@vue/test-utils'
 import ErrorAlert from '@/components/ErrorAlert.vue'
 
 describe('ErrorAlert', () => {
+    const data = {
+        error: 'this is the error message',
+        hasError: true
+    }
+
     it('renders props.error and props.hasError when passed', () => {
-        const error = 'this is the error message';
-        const hasError = true;
         const wrapper = shallowMount(ErrorAlert, {
-            propsData: { error, hasError }
+            propsData: data
         })
         
-        expect(wrapper.text()).toMatch(error);
+        expect(wrapper.text()).toMatch(data.error);
         expect(wrapper.props().hasError).toBe(true);
     })
 })

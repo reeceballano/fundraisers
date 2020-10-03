@@ -9,7 +9,7 @@ describe('Fundraiser', () => {
     }
 
     it('should return a comma separated total', () => {
-        const wrapper = shallowMount(Fundraiser, {
+        const wrapper = mount(Fundraiser, {
             propsData: {
                 fundraiser: data
             }
