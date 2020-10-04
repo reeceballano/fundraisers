@@ -70,7 +70,7 @@ export default {
 
     data() {
         return {
-            campaignId: null,
+            campaignId: 1,
             pageType: ['S', 'T'],
             toggle: false,
             isDisabled: true,
