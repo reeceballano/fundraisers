@@ -5,7 +5,7 @@ const state = {
     campaignId: 1,
     theme: 'light',
     pageType: '',
-    itemCount: 0,
+    itemCount: 5,
     fundraisers: {},
     isLoading: false,
     hasError: false,

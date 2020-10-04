@@ -1,6 +1,5 @@
 <template>
     <div class="relative">
-        <button class="trigger" @click="callAction">dispatch</button>
         <select @change="saveOptions" v-model="option" class="select-input" id="grid-theme">
             <option v-for="(item, index) in data" :key="index" :value="item">{{ item }}</option>
         </select>
@@ -32,10 +31,6 @@ export default {
     },
 
     methods: {
-        callAction() {
-            this.$store.dispatch('fundraiser/savePageType', 'S');
-        },
-
         saveOptions() {
             switch(this.name) {
                 case 'selectItemCount':
