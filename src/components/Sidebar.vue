@@ -73,7 +73,7 @@ export default {
             campaignId: null,
             pageType: ['S', 'T'],
             toggle: false,
-            isDisabled: false,
+            isDisabled: true,
         }
     },
 
@@ -109,10 +109,10 @@ export default {
         },
 
         checkButtonStatus() {
-            if(this.campaignId == '') {
-                this.isDisabled = false;
-            } else {
+            if(this.campaignId !== '') {
                 this.isDisabled = true;
+            } else {
+                this.isDisabled = false;
             }
         }
     }
