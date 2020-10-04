@@ -79,7 +79,7 @@ export default {
     computed: {
         ...mapGetters('fundraiser', ['getCampaignId', 'getTheme', 'getItemCount', 'getPageType']),
         isButtonDisabled() {
-            return this.getCampaignId.length > 0;
+            return this.campaignId !== null && this.getCampaignId !== '';
         }
     },
 

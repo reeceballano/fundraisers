@@ -1,4 +1,4 @@
-import { mount, shallowMount, createLocalVue  } from '@vue/test-utils'
+import { shallowMount, createLocalVue  } from '@vue/test-utils'
 import Select from '@/components/Select.vue'
 import Vuex from 'vuex'
 
