@@ -60,7 +60,6 @@
 
 <script>
 import Select from '@/components/Select';
-import { mapGetters } from 'vuex';
 
 export default {
     name: 'Sidebar',
@@ -75,10 +74,6 @@ export default {
             toggle: false,
             isDisabled: true,
         }
-    },
-
-    computed: {
-        ...mapGetters('fundraiser', ['getCampaignId', 'getTheme', 'getItemCount', 'getPageType']),
     },
 
     watch: {
