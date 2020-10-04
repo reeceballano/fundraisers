@@ -46,11 +46,11 @@
 
                     <div class="ml-3 text-gray-700 font-medium">
                         <span v-if="toggle">
-                            Swith to Light Mode
+                            Switch to Light Mode
                         </span>
 
                         <span v-else>
-                            Swith to Dark Mode
+                            Switch to Dark Mode
                         </span>
                     </div>
                 </label>
