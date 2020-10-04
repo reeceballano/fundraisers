@@ -6,9 +6,6 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('Select', () => {
-    let fundraiser
-    let store
-
     const props = {
         name: 'selectPageType',
         data: ['S', 'T']
@@ -17,19 +14,8 @@ describe('Select', () => {
     let wrapper = null;
 
     beforeEach(() => {
-        fundraiser = {
-            namespaced: true,
-            actions: {
-                savePageType: jest.fn()
-
-            }
-        }
-
-        store = new Vuex.Store({
-            modules: {
-                fundraiser
-            }
-        })
+        const store = new Vuex.Store()
+        store.dispatch = jest.fn()
 
         wrapper = shallowMount(Select, {
             data() {
@@ -58,12 +44,19 @@ describe('Select', () => {
     })
 
     it('should select the first option S then call savePagetype action', async () => {
+        /**
+            Find and select the first option
+            We need add await first then Trigger the change event
+            Expect to be the value of model(option) is "S"
+            Dispatch fundraiser/saveType with a payload "S"
+        */
         wrapper.findAll('select#grid-theme > option').at(0).element.selected = true;
         await wrapper.find('select#grid-theme').trigger('change');
         expect(wrapper.vm.option).toBe('S');
         expect(wrapper.props().name).toBe('selectPageType');
-        // expect(wrapper.vm.$store.dispatch('fundraiser/savePagetype')).toHaveBeenCalled()
+        expect(wrapper.vm.$store.dispatch).toHaveBeenCalledWith(
+            'fundraiser/savePageType',
+            'S'
+        )
     })
-
-
 })
