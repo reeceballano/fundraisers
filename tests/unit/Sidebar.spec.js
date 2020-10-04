@@ -50,7 +50,7 @@ describe('Sidebar', () => {
         )
     })
 
-    it('dispatch the fetchItems when campaignId has a value and the submit has been triggered', async () => {
+    it('calls the fetchItems method when campaignId has a value and the submit has been triggered', async () => {
         /**
             if button is disabled you will see an error (Received: "fundraiser/saveCampaignId", 2) saveCampaignId method is called everytime you set the value of campaignId
         */
