@@ -16,7 +16,7 @@ describe('Sidebar', () => {
             data() {
                 return {
                     campaignId: 1,
-                    isDisabled: false,
+                    isEnabled: false,
                 }
             },
             store,
@@ -28,16 +28,16 @@ describe('Sidebar', () => {
         wrapper.destroy();
     })
 
-    it('must be submit button is enabled if isDisabled is false', () => {
+    it('must be submit button is disabled if isEnabled is false', () => {
         const button = wrapper.find('button');
-        expect(wrapper.vm.isDisabled).toBe(false);
+        expect(wrapper.vm.isEnabled).toBe(false);
         expect(button.classes()).not.toContain('button-enabled');
     })
 
-    it('must be button is disabled if isDisabled is true', async () => {
+    it('must be button is enabled if isEnabled is true', async () => {
         const button = wrapper.find('button');
-        await wrapper.setData({ isDisabled: true });
-        expect(wrapper.vm.isDisabled).toBe(true);
+        await wrapper.setData({ isEnabled: true });
+        expect(wrapper.vm.isEnabled).toBe(true);
         expect(button.classes()).not.toContain('button-disabled');
     })
 
@@ -47,6 +47,24 @@ describe('Sidebar', () => {
         expect(wrapper.vm.$store.dispatch).toHaveBeenCalledWith(
             'fundraiser/saveCampaignId',
             wrapper.vm.campaignId
+        )
+    })
+
+    it('dispatch the fetchItems when campaignId has a value and the submit has been triggered', async () => {
+        /**
+            if button is disabled you will see an error (Received: "fundraiser/saveCampaignId", 2) saveCampaignId method is called everytime you set the value of campaignId
+        */
+        const button = wrapper.find('button');
+        
+        await wrapper.setData({ campaignId: 2 });
+        expect(wrapper.vm.campaignId).toBe(2);
+        await wrapper.setData({ isEnabled: true });
+        expect(wrapper.vm.isEnabled).toBe(true);
+        expect(button.classes()).not.toContain('button-disabled');
+
+        await button.trigger('click');
+        expect(await wrapper.vm.$store.dispatch).toHaveBeenCalledWith(
+            'fundraiser/fetchFundraisers'
         )
     })
 })

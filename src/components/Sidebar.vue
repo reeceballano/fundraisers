@@ -19,8 +19,9 @@
         </div>
 
         <div class="button-wrapper">
+            {{ isEnabled }}
             <button 
-                v-if="isDisabled"
+                v-if="isEnabled"
                 type="button"
                 class=" text-white w-full button-enabled" 
                 @click="fetchItems()" 
@@ -72,7 +73,7 @@ export default {
             campaignId: 1,
             pageType: ['S', 'T'],
             toggle: false,
-            isDisabled: true,
+            isEnabled: true,
         }
     },
 
@@ -94,7 +95,7 @@ export default {
     
     methods: {
         fetchItems() {
-            if(this.campaignId !== '') {
+            if(this.campaignId != '') {
                 this.$store.dispatch('fundraiser/fetchFundraisers');
             }
         },
@@ -105,10 +106,10 @@ export default {
         },
 
         checkButtonStatus() {
-            if(this.campaignId !== '') {
-                this.isDisabled = true;
+            if(this.campaignId != '') {
+                this.isEnabled = true;
             } else {
-                this.isDisabled = false;
+                this.isEnabled = false;
             }
         }
     }
