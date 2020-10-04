@@ -19,7 +19,6 @@
         </div>
 
         <div class="button-wrapper">
-            {{ isEnabled }}
             <button 
                 v-if="isEnabled"
                 type="button"
