@@ -1,6 +1,7 @@
 <template>
     <div class="relative">
         <select @change="saveOptions" v-model="option" class="select-input" id="grid-theme">
+            <option value="" selected>Choose option</option>
             <option v-for="(item, index) in data" :key="index" :value="item">{{ item }}</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -26,7 +27,7 @@ export default {
 
     data() {
         return {
-            option: null,
+            option: '',
         }
     },
 
@@ -45,7 +46,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
