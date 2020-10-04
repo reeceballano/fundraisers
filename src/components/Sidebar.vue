@@ -2,7 +2,7 @@
     <div id="sidebar" class="mb-10 md:w-1/3 shadow-md p-8 h-64 rounded">
         <div class="w-full mb-3">
             <label for="campaignId" class="font-light">Campaign ID</label>
-            <input id="campaignId" name="campaignId" class="text-input" type="text" v-model="campaignId" @keypress.enter="saveOptions()" />
+            <input id="campaignId" name="campaignId" class="text-input" type="text" v-model="campaignId" />
         </div>
 
         <div class="w-full mb-3">
@@ -20,11 +20,18 @@
 
         <div class="button-wrapper">
             <button 
+                v-if="isButtonDisabled"
                 type="button"
-                class=" text-white w-full" 
+                class=" text-white w-full button-enabled" 
                 @click="fetchItems()" 
-                :class="[getPageType ? 'button-enabled' : 'button-disabled']"
-                :disabled="getPageType == ''"
+            >Show 
+            </button>
+
+            <button 
+                v-else
+                type="button"
+                class=" text-white w-full button-disabled" 
+                disabled
             >Show
             </button>
 
@@ -63,7 +70,7 @@ export default {
 
     data() {
         return {
-            campaignId: 1,
+            campaignId: null,
             pageType: ['S', 'T'],
             toggle: false,
         }
@@ -71,6 +78,9 @@ export default {
 
     computed: {
         ...mapGetters('fundraiser', ['getCampaignId', 'getTheme', 'getItemCount', 'getPageType']),
+        isButtonDisabled() {
+            return this.campaignId !== null && this.getCampaignId !== '';
+        }
     },
 
     watch: {
@@ -89,7 +99,6 @@ export default {
 
     
     methods: {
-
         fetchItems() {
             console.log('fetch')
             this.$store.dispatch('fundraiser/fetchFundraisers');
