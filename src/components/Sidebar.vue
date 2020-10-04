@@ -94,8 +94,9 @@ export default {
     
     methods: {
         fetchItems() {
-            console.log('fetch')
-            this.$store.dispatch('fundraiser/fetchFundraisers');
+            if(this.campaignId !== '') {
+                this.$store.dispatch('fundraiser/fetchFundraisers');
+            }
         },
 
         saveOptions() {
