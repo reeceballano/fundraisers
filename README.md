@@ -22,3 +22,8 @@ $ npm run serve
 ```sh
 $ npm run build
 ```
+
+## Unit Testing
+```sh
+$ npm run test:unit
+```
