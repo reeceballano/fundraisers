@@ -6,12 +6,12 @@
         </div>
 
         <div class="w-full mb-3">
-            <label for="campaignId" class="font-light">Page Type <small>(S: Individual T: Team)</small></label>
+            <label for="campaignId" class="font-light">Page Type <small>(S: Individual T: Team) Default: S</small></label>
             <Select name="selectPageType" :data="pageType"></Select>
         </div>
 
         <div class="w-full mb-3">
-            <label for="campaignId" class="font-light">Item to display</label>
+            <label for="campaignId" class="font-light">Item to display <small>Default: 5</small></label>
             <Select 
                 name="selectItemCount"
                 :data="[1,2,3,4,5,6,7,8,9,10]"
@@ -20,7 +20,7 @@
 
         <div class="button-wrapper">
             <button 
-                v-if="isButtonDisabled"
+                v-if="isDisabled"
                 type="button"
                 class=" text-white w-full button-enabled" 
                 @click="fetchItems()" 
@@ -73,19 +73,18 @@ export default {
             campaignId: null,
             pageType: ['S', 'T'],
             toggle: false,
+            isDisabled: true,
         }
     },
 
     computed: {
         ...mapGetters('fundraiser', ['getCampaignId', 'getTheme', 'getItemCount', 'getPageType']),
-        isButtonDisabled() {
-            return this.campaignId !== null && this.getCampaignId !== '';
-        }
     },
 
     watch: {
         campaignId() {
             this.saveOptions();
+            this.checkButtonStatus();
         },
 
         toggle() {
@@ -107,6 +106,14 @@ export default {
         saveOptions() {
             console.log('changed', this.campaignId)
             this.$store.dispatch('fundraiser/saveCampaignId', this.campaignId);
+        },
+
+        checkButtonStatus() {
+            if(this.campaignId !== '') {
+                this.isDisabled = true;
+            } else {
+                this.isDisabled = false;
+            }
         }
     }
 }

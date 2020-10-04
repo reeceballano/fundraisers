@@ -50,7 +50,7 @@ describe('Select', () => {
             Expect to be the value of model(option) is "S"
             Dispatch fundraiser/saveType with a payload "S"
         */
-        wrapper.findAll('select#grid-theme > option').at(0).element.selected = true;
+        wrapper.findAll('select#grid-theme > option').at(1).element.selected = true;
         await wrapper.find('select#grid-theme').trigger('change');
         expect(wrapper.vm.option).toBe('S');
         expect(wrapper.props().name).toBe('selectPageType');
