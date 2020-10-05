@@ -32,7 +32,7 @@ describe('InputText', () => {
         expect(wrapper.attributes().type).toBe('text');
     })
 
-    it('change the value then update the v-model in parent component', async () => {
+    it('change the value then update the v-model in parent component', () => {
         const parentComponent = mount({
             data() { 
                 return { 
