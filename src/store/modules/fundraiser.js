@@ -81,14 +81,10 @@ const actions = {
 
             state.isLoading = false;
             commit('SET_FUNDRAISERS', response.data.Pages);
-
+            commit('SET_HASERROR', false);
         } catch(error) {
             commit('SET_HASERROR', true);
             state.isLoading = false;
-            
-            setTimeout(() => {
-                commit('SET_HASERROR', false);
-            }, 2000);
         }
     },
 

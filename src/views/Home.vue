@@ -6,9 +6,11 @@
                     <div class="flex flex-col md:flex-row gap-16">
                         <Sidebar />
                         <div class="md:ml-10 md:w-2/3">
-                            <ErrorAlert :hasError="getHasError"  error="Something is wrong please try again." />
-                            
-                            <Alert :hasError="false" alertContent="success message" />
+                            <Alert 
+                                v-if="getHasError"
+                                :hasError="getHasError" 
+                                alertContent="Something is wrong!" 
+                            />
                             
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
 
@@ -29,7 +31,6 @@
 <script>
 import FundraiserItem from '@/components/Fundraiser';
 import Sidebar from '@/components/Sidebar';
-import ErrorAlert from '@/components/ErrorAlert'; 
 import Alert from '@/components/Alert';
 import { mapGetters } from 'vuex';
 
@@ -38,7 +39,6 @@ export default {
     components: {
         FundraiserItem,
         Sidebar,
-        ErrorAlert,
         Alert
     },
 
