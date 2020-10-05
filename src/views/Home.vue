@@ -7,7 +7,9 @@
                         <Sidebar />
                         <div class="md:ml-10 md:w-2/3">
                             <ErrorAlert :hasError="getHasError"  error="Something is wrong please try again." />
-
+                            
+                            <Alert :hasError="false" alertContent="success message" />
+                            
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
 
                             <FundraiserItem 
@@ -28,6 +30,7 @@
 import FundraiserItem from '@/components/Fundraiser';
 import Sidebar from '@/components/Sidebar';
 import ErrorAlert from '@/components/ErrorAlert'; 
+import Alert from '@/components/Alert';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -36,6 +39,7 @@ export default {
         FundraiserItem,
         Sidebar,
         ErrorAlert,
+        Alert
     },
 
     computed: {
