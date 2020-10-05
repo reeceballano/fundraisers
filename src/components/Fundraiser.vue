@@ -10,7 +10,7 @@
                         <div class="font-medium">{{ fundraiser.CreatorName }}</div>
                         <div class="text-gray-600 text-sm">ID: {{ fundraiser.Id }}</div>
                     </div>
-                    <div class="text-gray-600 text-xs">${{ numberWithCommas }}</div>
+                    <div class="fund-amount">${{ numberWithCommas }}</div>
                 </div>
             </div>
         </div>

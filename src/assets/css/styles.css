@@ -71,6 +71,13 @@ input:checked ~ .toggle__dot {
 }
 
 /**
+    ITEM
+*/
+.fund-amount {
+    @apply text-xs bg-green-500 px-3 py-1 rounded text-gray-600 text-white; 
+}
+
+/**
     THEME
 */
 
@@ -120,6 +127,10 @@ input:checked ~ .toggle__dot {
 
 .dark .button-wrapper span {
     color: #c9cbe2 !important;
+}
+
+.dark .fund-amount {
+    @apply bg-blue-900;
 }
 
 @-webkit-keyframes DarkTheme {
