@@ -25,19 +25,11 @@
 
         <div class="button-wrapper">
             <button 
-                v-if="isEnabled"
                 type="button"
-                class=" text-white w-full button-enabled" 
+                class=" text-white w-full "
+                :class="[ isEnabled ? 'button-enabled' : 'button-disabled' ]" 
                 @click="fetchItems()" 
             >Show 
-            </button>
-
-            <button 
-                v-else
-                type="button"
-                class=" text-white w-full button-disabled" 
-                disabled
-            >Show
             </button>
 
             <div class="flex items-center justify-center w-full mt-8">
@@ -107,7 +99,6 @@ export default {
         },
 
         saveOptions() {
-            console.log('changed', this.campaignId)
             this.$store.dispatch('fundraiser/saveCampaignId', this.campaignId);
         },
 
