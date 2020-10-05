@@ -7,11 +7,17 @@
                         <Sidebar />
                         <div class="md:ml-10 md:w-2/3">
                             <Alert 
-                                v-if="getHasError"
+                                v-show="getHasError"
                                 :hasError="getHasError" 
                                 alertContent="Something is wrong!" 
                             />
-                            
+
+                            <Alert 
+                                v-show="isEmpty && !getHasError"
+                                :hasError="isEmpty" 
+                                alertContent="No data available" 
+                            />
+                           
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
 
                             <FundraiserItem 
@@ -40,6 +46,22 @@ export default {
         FundraiserItem,
         Sidebar,
         Alert
+    },
+
+    data() {
+        return {
+            isEmpty: false,
+        }
+    },
+
+    watch: {
+        getFundraisers() {
+            if(this.getFundraisers.length >= 1) {
+                this.isEmpty = false;
+            } else {
+                this.isEmpty = true;
+            }
+        },
     },
 
     computed: {
