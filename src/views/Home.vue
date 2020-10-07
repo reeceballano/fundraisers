@@ -21,8 +21,10 @@
                             <span class="text-gray-100" v-show="getIsLoading">Loading...</span>
 
                             <FundraiserItem 
+                                v-show="!getHasError"
                                 v-for="(data, index) in getFundraisers"
                                 :key="index"
+                                :loading="getIsLoading"
                                 :fundraiser="data">
                             </FundraiserItem>
                         </div>
