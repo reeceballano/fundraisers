@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div v-else class="fundraiser-item">
+        <div v-else class="fundraiser-item skeleton-loading">
             <div class="border-gray-400 flex flex-row mb-2">
                 <div class="animate-pulse select-none cursor-pointer bg-white rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">

@@ -13,7 +13,8 @@ describe('Fundraiser', () => {
     beforeEach(() => {
         wrapper = shallowMount(Fundraiser, {
             propsData: {
-                fundraiser: data
+                fundraiser: data,
+                loading: true
             }
         })
     });
@@ -35,6 +36,12 @@ describe('Fundraiser', () => {
         }
         
         expect(fundraiser).toStrictEqual(expectedData);
+    })
+
+    it('should display the skeleton loader if loading is true', () => {
+        expect(wrapper.props().loading).toBe(true);
+        const skeleton = wrapper.find('div');
+        expect(skeleton.classes()).toContain('skeleton-loading');
     })
     
 })
