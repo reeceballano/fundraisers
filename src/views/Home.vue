@@ -39,6 +39,7 @@ import FundraiserItem from '@/components/Fundraiser';
 import Sidebar from '@/components/Sidebar';
 import Alert from '@/components/Alert';
 import { mapGetters } from 'vuex';
+import { useApi } from '@/utils/api';
 
 export default {
     name: 'Home',
@@ -51,6 +52,7 @@ export default {
     data() {
         return {
             isEmpty: false,
+            api: useApi(),
         }
     },
 
@@ -66,7 +68,9 @@ export default {
 
     computed: {
         ...mapGetters('fundraiser', ['getFundraisers', 'getIsLoading', 'getHasError']),
+
     },
+
 
 }
 </script>
